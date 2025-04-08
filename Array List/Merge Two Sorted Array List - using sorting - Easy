@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+
+public class MergeArrayListsInPlace {
+
+    public static void mergeTwoLists(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+        int i = 0, j = 0;
+        
+        while (j < list2.size()) {
+            list1.add(list2.get(j));
+            j++;
+        }
+
+        list1.sort(null);
+    }
+
+    public static void main(String[] args) {
+        
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(4);
+
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(3);
+        list2.add(5);
+
+        mergeTwoLists(list1, list2);
+        System.out.println(list1);  
+    }
+}
+
+Time Complexity
+Merging will take O(m), as while loop iterates over list2 and m is the size of list2
+Sorting will usually take, O(n log n). But here we have a merged list (list1 + list 2 => n+m), so T.C will be O((n+m) log (n+m))
+
+Space Complexity
+For adding elements from list2 to list1, there is no extra space needed. But sorting requires extra space, O(log(n+m)). It by default uses Merge Sort
