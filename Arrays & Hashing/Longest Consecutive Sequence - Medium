@@ -1,0 +1,40 @@
+// Time Complexity - O(n)
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        int n = nums.length;
+        //adding elements into the 'Set'
+        for(int i=0;i<n;i++)
+        {
+            set.add(nums[i]);
+        }
+
+        int longest=0;
+        // converting set to array for index access
+        Integer[] arr = set.toArray(new Integer[0]);
+        for(int i=0;i<arr.length;i++)
+        {
+            int num = arr[i];
+            // Only start counting from the beginning of a sequence
+            if(!set.contains(num-1))
+            {
+                int current = num;
+                int count = 1;
+
+                while(set.contains(current+1))
+                {
+                    current++;
+                    count++;
+                }
+                if(count > longest)
+                {
+                    longest = count;
+                }
+            }
+        }
+        return longest;
+    }
+}
