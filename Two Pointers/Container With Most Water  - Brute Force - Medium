@@ -1,0 +1,23 @@
+// Brute Force - O(n^2)
+
+class Solution {
+    public int maxArea(int[] heights) {
+        
+        int count=0;
+        int area=0;
+        for(int i=0;i<heights.length;i++)
+        {
+            for(int j=i+1;j<heights.length;j++)
+            {
+             area = Math.min(heights[i], heights[j]) * (j-i);
+
+             if(area > count)
+             {
+                count = area;
+             }
+        }
+    }
+        return count;
+
+}
+}
