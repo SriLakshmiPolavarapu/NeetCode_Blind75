@@ -1,0 +1,30 @@
+
+// optimal solution using HashSet - O(n)
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) 
+    {
+        int n = s.length();
+        int left=0; // like i in brute force
+        int right=0; // like j
+        int maxLen = 0;
+        HashSet<Character> seen = new HashSet<>();
+
+        while(right < n) //**
+        {
+            if(!seen.contains(s.charAt(right)))
+            {
+                seen.add(s.charAt(right));
+                maxLen = Math.max(maxLen, right-left+1);
+                right++;
+            }
+            else
+            {
+                seen.remove(s.charAt(left));
+                left++;
+            }
+        }
+            
+        return maxLen;
+    }
+}
