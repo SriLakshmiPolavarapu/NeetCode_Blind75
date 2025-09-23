@@ -1,0 +1,17 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        wordSet = set(wordDict) # for fast lookup O(1)
+
+        dp = [False] * (len(s) + 1) #initially everything is False
+        dp[0] = True
+
+        for i in range(1, len(s)+1):
+            for word in wordSet:
+                if i>=len(word):
+                    if dp[i - len(word)] and s[i - len(word):i] == word:
+                         dp[i] = True
+                         break
+        return dp[len(s)]
+
+        
