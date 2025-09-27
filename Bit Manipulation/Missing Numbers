@@ -1,0 +1,34 @@
+#Method 1
+class Solution:
+    def missingNumber(self, nums):
+        formula = (len(nums) * (len(nums)+1))//2
+        return formula - sum(nums)
+
+#Method 2
+class Solution:
+    def missingNumber(self, nums):
+        formula = (len(nums) * (len(nums)+1)) // 2
+        for i in range(len(nums)):
+            formula -= nums[i]   
+        return formula
+
+#Method 3
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = (len(nums) * (len(nums)+1))//2
+        for num in nums:
+            res -= num
+        return res    
+
+#Method 4
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        xor = 0;
+        for i in range(len(nums)+1):
+            xor = xor ^ i
+
+        for num in nums:
+            xor = xor ^ num
+
+        return xor  
