@@ -1,43 +1,19 @@
-public class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
-class Solution {
-    public ListNode reverseList(ListNode head) {
-        if(head == null)
-            return null;
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        prev = None
+        current = head
 
-        LinkedList<Integer> values = new LinkedList<>();
-        ListNode current = head;
-
-        while(current != null)
-        {
-            values.add(current.val);
-            current = current.next;
-        }  
-        //reverse
-        ListNode newHead = new ListNode(values.getLast());
-        current = newHead;
-
-        for(int i=values.size()-2; i>=0;i--)
-        {
-            current.next = new ListNode(values.get(i));
-            current = current.next;
-        }
-        return newHead;
-
-    }
-  public static void printlist(ListNode head)
-  {
-    while(head != null)
-      {
-      System.out.print(head.val + "-->");
-      head = head.next;
-      }
-    System.out.print("null");
-    }
-}
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        
+        return prev
